@@ -1,4 +1,4 @@
-# 🧩 User Service (Flask + Kubernetes + Argo CD)
+# 🧩 Microfleet (Flask + Kubernetes + Argo CD)
 
 This is a simple Flask-based microservice that exposes a `/users` endpoint. It's containerized using **Podman**, deployed to **Minikube**, and managed with **Argo CD** using a GitOps workflow.
 
