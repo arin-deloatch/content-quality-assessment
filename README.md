@@ -1,12 +1,10 @@
-# 🧩 Microfleet (Flask + Kubernetes + Argo CD)
-
-This is a simple Flask-based microservice that exposes a `/users` endpoint. It's containerized using **Podman**, deployed to **Minikube**, and managed with **Argo CD** using a GitOps workflow.
+# Web Content Quality Automated Assessment
 
 ---
 
 ## 🔧 Tech Stack
 
-- 🐍 Python + Flask 
+- 🐍 FastAPI
 - 📦 Containerized with Podman
 - ☸️ Deployed to Minikube (local Kubernetes)
 - 🚀 GitOps deployment with Argo CD
