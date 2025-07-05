@@ -1,7 +1,15 @@
-FROM python:3.10-slim
+FROM python:3.11-slim
 
 # Install system deps
-RUN apt-get update && apt-get install -y curl build-essential
+RUN apt-get update && apt-get install -y \
+    curl \
+    build-essential \
+    python3-dev \
+    libpq-dev \
+    gcc \
+    default-jre \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 
 # Install Poetry
 ENV POETRY_VERSION=1.8.2

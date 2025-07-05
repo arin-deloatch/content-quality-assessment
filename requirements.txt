@@ -1,0 +1,5 @@
+textstat 
+fastapi[standard]
+beautifulsoup4
+language-tool-python 
+langgraph 
