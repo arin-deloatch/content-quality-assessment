@@ -1,25 +1,27 @@
-FROM python:3.10-slim
+FROM python:3.11-slim
 
-# Install system deps
-RUN apt-get update && apt-get install -y curl build-essential
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    gcc \
+    libffi-dev \
+    libpq-dev \
+    libssl-dev \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install Poetry
-ENV POETRY_VERSION=1.8.2
-RUN curl -sSL https://install.python-poetry.org | python3 -
-ENV PATH="/root/.local/bin:$PATH"
+RUN apt-get update && apt-get install -y default-jre && rm -rf /var/lib/apt/lists/*
 
-# Create and set workdir
+# Set workdir
 WORKDIR /app
 
-# Copy only the dependency files first (for caching)
-COPY pyproject.toml poetry.lock* ./
+# Copy and install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Install dependencies
-RUN poetry config virtualenvs.create false \
-  && poetry install --no-root --no-interaction --no-ansi
-
-# Copy the app code
+# Copy application source code
 COPY . .
 
 EXPOSE 5000
+
 CMD ["python", "app.py"]

@@ -8,8 +8,10 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
+        
       - name: build image
         run : docker build ./ -t pseoul/content-quality-assessment:latest
+
       - name: push image to docker hub
         run: |
           docker login -u pseoul -p ${{ secrets.DOCKER_HUB_TOKEN}}
